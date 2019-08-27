@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--1.放行静态资源-->
+    <http security="none" pattern="/css/**"/>
+    <http security="none" pattern="/img/**"/>
+    <http security="none" pattern="/plugins/**"/>
+    <http security="none" pattern="/js/**"/>
+    <http security="none" pattern="/register.html"/>
+    <http security="none" pattern="/shoplogin.html"/>
+    <http security="none" pattern="/seller/add.do"/>
+
+    <!--2.对资源进行拦截-->
+    <http use-expressions="false">
+        <intercept-url pattern="/**" access="ROLE_ADMIN"/>
+        <form-login login-page="/shoplogin.html" authentication-failure-url="/shoplogin.html" default-target-url="/admin/index.html" always-use-default-target="true"/>
+        <headers>
+            <frame-options policy="SAMEORIGIN"/>
+        </headers>
+        <csrf disabled="true"/>
+    </http>
+    <!--3.配置认证管理器-->
+    <authentication-manager>
+        <authentication-provider user-service-ref="userService">
+            <password-encoder ref="passwordEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="userService" class="com.pinyougou.shop.service.UserServiceImpl">
+        <beans:property name="sellerService" ref="sellerService"/>
+    </beans:bean>
+    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <dubbo:application name="pinyougou-shop-web" />
+    <dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+    <dubbo:reference interface="com.pinyougou.sellergoods.service.SellerService" id="sellerService"/>
+</beans:beans>

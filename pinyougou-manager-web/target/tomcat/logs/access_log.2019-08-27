@@ -1,0 +1,16 @@
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:41 +0800] "GET /admin/content_category.html HTTP/1.1" 302 - http-bio-9101-exec-1 99
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:46 +0800] "GET / HTTP/1.1" 302 - http-bio-9101-exec-2 4
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:46 +0800] "GET /assets/img/favicon.ico HTTP/1.1" 302 - http-bio-9101-exec-4 3
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:49 +0800] "POST /login HTTP/1.1" 302 - http-bio-9101-exec-6 8
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:49 +0800] "GET /login.html HTTP/1.1" 304 - http-bio-9101-exec-8 20
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:49 +0800] "GET /assets/img/favicon.ico HTTP/1.1" 302 - http-bio-9101-exec-9 2
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:51 +0800] "POST /login HTTP/1.1" 302 - http-bio-9101-exec-10 3
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:51 +0800] "GET /admin/index.html HTTP/1.1" 200 22310 http-bio-9101-exec-10 14
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:51 +0800] "GET /plugins/jQueryUI/jquery-ui.min.js HTTP/1.1" 404 1017 http-bio-9101-exec-10 2
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:51 +0800] "GET /admin/home.html HTTP/1.1" 200 4468 http-bio-9101-exec-10 19
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:53 +0800] "GET /admin/content.html HTTP/1.1" 200 7846 http-bio-9101-exec-7 18
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:53 +0800] "GET /admin/%7B%7Bcontent.pic%7D%7D HTTP/1.1" 404 1009 http-bio-9101-exec-3 2
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:38:53 +0800] "GET /admin/%7B%7Bentity.pic%7D%7D HTTP/1.1" 404 1007 http-bio-9101-exec-6 4
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:39:03 +0800] "GET /login.do HTTP/1.1" 200 16 http-bio-9101-exec-10 12154
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:39:04 +0800] "GET /content/findAll.do HTTP/1.1" 200 659 http-bio-9101-exec-6 10891
+0:0:0:0:0:0:0:1 - - [27/Aug/2019:19:39:04 +0800] "GET /contentCategory/findAll.do HTTP/1.1" 200 168 http-bio-9101-exec-3 10891
