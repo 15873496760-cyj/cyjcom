@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!--    &lt;!&ndash;1.配置事务管理器&ndash;&gt;
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    &lt;!&ndash;配置声明式事务&ndash;&gt;
+    <tx:annotation-driven transaction-manager="transactionManager"/>-->
+
+    <dubbo:protocol port="20881" name="dubbo"/>
+    <!--配置发布到zookeeper中的服务的名称-->
+    <dubbo:application name="pinyougou-search-service" />
+    <!--配置zookeeper中的注册地址-->
+    <dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+    <!--配置zookeeper中的配置所在的包名-->
+    <dubbo:annotation package="com.pinyougou.search.service.impl"/>
+
+</beans>

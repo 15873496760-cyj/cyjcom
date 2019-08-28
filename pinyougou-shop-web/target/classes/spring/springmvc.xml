@@ -4,11 +4,11 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!--0.读取属性文件-->
+    <!--读取属性文件-->
     <context:property-placeholder location="classpath*:properties/*.properties"/>
-    <!--1.添加包扫描-->
+    <!--添加包扫描-->
     <context:component-scan base-package="com.pinyougou.shop.controller"/>
-    <!--2.使用fastjson进行java对象与json字符串的互相转换-->
+    <!--使用fastjson进行java对象与json字符串的互相转换-->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
@@ -22,12 +22,12 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <!--4.配置文件上传-->
+    <!--配置文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="maxUploadSize" value="5242880"/>
     </bean>
-    <!--3.配置dubbo-->
+    <!--配置dubbo-->
     <dubbo:application name="pinyougou-shop-web"/>
     <dubbo:registry address="zookeeper://192.168.25.128:2181"/>
     <dubbo:annotation package="com.pinyougou.shop.controller"/>

@@ -5,16 +5,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--1.加载属性文件-->
+    <!--加载属性文件-->
     <context:property-placeholder location="classpath*:properties/*.properties"/>
-    <!--2.定义数据源-->
+    <!--定义数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
-    <!--3.定义SqlSessionFactoryBean-->
+    <!--定义SqlSessionFactoryBean-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
         <property name="dataSource" ref="dataSource"/>
@@ -27,7 +27,7 @@
             </bean>
         </property>
     </bean>
-    <!--4.定义MapperScannerConfigurar-->
+    <!--定义MapperScannerConfigurar-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.pinyougou.mapper"/>
     </bean>
