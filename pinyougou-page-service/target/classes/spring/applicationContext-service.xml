@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--配置读取文件-->
+    <context:property-placeholder location="classpath*:properties/*.properties"/>
+
+
+    <dubbo:protocol port="20885" name="dubbo"/>
+    <!--配置发送到zookeeper服务上的名称-->
+    <dubbo:application name="pinyougou-page-service"/>
+    <!--配置Zookeeper服务地址-->
+    <dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+    <!--Zookeeper配置所在的包名-->
+    <dubbo:annotation package="com.pinyougou.page.service.impl"/>
+
+</beans>

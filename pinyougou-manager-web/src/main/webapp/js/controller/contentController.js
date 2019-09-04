@@ -43,7 +43,7 @@ app.controller('contentController' ,function($scope,$controller,contentCategoryS
 			function(response){
 				if(response.success){
 					//重新查询 
-		        	$scope.findAll();//重新加载
+                    $scope.reloadList();//重新加载
 				}else{
 					alert(response.message);
 				}

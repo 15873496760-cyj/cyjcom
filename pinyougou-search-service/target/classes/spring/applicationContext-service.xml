@@ -10,7 +10,7 @@
     &lt;!&ndash;配置声明式事务&ndash;&gt;
     <tx:annotation-driven transaction-manager="transactionManager"/>-->
 
-    <dubbo:protocol port="20881" name="dubbo"/>
+    <dubbo:protocol port="20883" name="dubbo"/>
     <!--配置发布到zookeeper中的服务的名称-->
     <dubbo:application name="pinyougou-search-service" />
     <!--配置zookeeper中的注册地址-->

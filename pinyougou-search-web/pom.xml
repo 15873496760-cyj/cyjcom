@@ -13,8 +13,6 @@
     <packaging>war</packaging>
 
     <name>pinyougou-search-web Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,6 +97,12 @@
         <dependency>
             <groupId>com.pinyougou</groupId>
             <artifactId>pinyougou-search-interface</artifactId>
+            <version>4.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pinyougou</groupId>
+            <artifactId>pinyougou-pojo</artifactId>
             <version>4.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

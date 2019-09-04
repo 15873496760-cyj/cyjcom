@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.pinyougou.search.listener"/>
+    <!--定义ConnectionFactory对象-->
+    <bean id="mqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://192.168.25.128:61616"/>
+    </bean>
+
+    <!--构造目标对象-->
+    <bean id="goodsUpdateStatus" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg name="name" value="goodsUpdateStatus"/>
+    </bean>
+
+    <!--创建删除目标对象-->
+    <bean id="deleteById" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg name="name" value="deleteById"/>
+    </bean>
+
+    <!--配置监听对象状态监听-->
+    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="mqConnectionFactory"/>
+        <property name="destination" ref="goodsUpdateStatus"/>
+        <property name="messageListener" ref="myMessageListener"/>
+    </bean>
+</beans>

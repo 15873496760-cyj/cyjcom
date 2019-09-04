@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--创建ConnectionFactory对象-->
+    <bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://192.168.25.128:61616"/>
+    </bean>
+
+    <!--创建审核状态的目标对象-->
+    <bean id="goodsUpdateStatus" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg name="name" value="goodsUpdateStatus"/>
+    </bean>
+
+    <!--创建删除目标对象-->
+    <bean id="deleteById" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg name="name" value="deleteById"/>
+    </bean>
+
+    <!--创建页面静态化的目标对象-->
+    <bean id="topicGenHtml" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg name="name" value="topicGenHtml"/>
+    </bean>
+
+    <!--创建模板对象-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="activeMQConnectionFactory"/>
+        <property name="defaultDestination" ref="goodsUpdateStatus"/>
+    </bean>
+</beans>

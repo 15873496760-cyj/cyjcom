@@ -43,7 +43,7 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
 			function(response){
 				if(response.success){
 					//重新查询 
-		        	$scope.findAll();//重新加载
+                    $scope.reloadList();
 				}else{
 					alert(response.message);
 				}
@@ -58,7 +58,7 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
 		specificationService.dele( $scope.selectIds ).success(
 			function(response){
 				if(response.success){
-					$scope.findAll();//刷新列表
+                    $scope.reloadList();
 					$scope.selectIds=[];
 				}						
 			}		

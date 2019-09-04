@@ -1,0 +1,8 @@
+server:
+  port: 8001
+spring:
+  activemq:
+    broker-url: tcp://192.168.25.128:61616
+sms:
+  accessKeyId: LTAI4FsigfNoHJCavTq4bsaG
+  accessKeySecret: ke0R519Ks2rChflxSxgc5UslCj65tr

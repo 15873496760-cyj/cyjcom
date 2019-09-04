@@ -60,7 +60,7 @@ app.controller('goodsController' ,function($scope,$controller,itemCatService,goo
 		goodsService.dele( $scope.selectIds ).success(
 			function(response){
 				if(response.success){
-					$scope.search();//刷新列表
+					$scope.reloadList();//刷新列表
 					$scope.selectIds=[];
 				}						
 			}		
@@ -96,7 +96,7 @@ app.controller('goodsController' ,function($scope,$controller,itemCatService,goo
 	$scope.updateStatus=(status)=>{
     	goodsService.updateStatus(status,$scope.selectIds).success(response=>{
     		if(response.success){
-    			$scope.search();
+                $scope.reloadList();
 			}else{
     			alert(response.message);
 			}

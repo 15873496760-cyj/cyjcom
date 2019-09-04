@@ -33,7 +33,7 @@
 
 <body class="hold-transition skin-red sidebar-mini"
 	  ng-app="pinyougou" ng-controller="goodsController"
-	  ng-init="searchEntity={auditStatus:0};findAllCategorys()">
+	  ng-init="searchEntity={auditStatus:0,isdelete:0};findAllCategorys()">
   <!-- .box-body -->
                 
                     <div class="box-header with-border">
@@ -82,8 +82,7 @@
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-			                          <tr ng-repeat="goods in list" ng-if="goods.isDelete!=1">
-										  {{selectIds}}---
+			                          <tr ng-repeat="goods in list">
 			                              <td><input type="checkbox" ng-click="updateSelection($event,goods.id)"></td>
 				                          <td>{{goods.id}}</td>
 									      <td>{{goods.goodsName}}</td>

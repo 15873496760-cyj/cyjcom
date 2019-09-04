@@ -5,9 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.solr.core.SolrTemplate;
-import org.springframework.data.solr.core.query.Query;
 import org.springframework.data.solr.core.query.SimpleQuery;
-import org.springframework.data.solr.core.query.result.ScoredPage;
+import org.springframework.data.solr.core.query.SolrDataQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -92,14 +91,11 @@ public class TestSolrTemplate {
      * 分页查询
      */
     public void test04() {
-        //构造查询对象
-        Query query = new SimpleQuery("*:*");
-        query.setOffset(0);
-        query.setRows(10);
-        ScoredPage<TbItem> tbItems = solrTemplate.queryForPage(query, TbItem.class);
-        List<TbItem> content = tbItems.getContent();
-        for (TbItem item : content) {
-            System.out.println("item = " + item);
-        }
+        //7.1)定义查询对象
+        SolrDataQuery query = new SimpleQuery("*:*");
+        //7.2)删除所有记录
+        solrTemplate.delete(query);
+        //7.3）提交删除
+        solrTemplate.commit();
     }
 }
